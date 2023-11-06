@@ -32,23 +32,20 @@ function isValidSudoku(board: string[][]): boolean {
         }
     }
 
-    for (let i = 0; i < 9; i++) {
-        for (let j = 0; j < 9; j++) {
-            if (!isValidPlae(i, j)) continue;
-            if (!isCorrect(board, i, j)) return false;
+    const targets = [
+        [1, 1], [1, 4], [1, 7],
+        [4, 1], [4, 4], [4, 7],
+        [7, 1], [7, 4], [7, 7]
+    ];
+    for (let i = 0; i < targets.length; i++) {
+        const nums = targets[i];
+        for (let j = 0; j < 3; j++) {
+            if (!isCorrect(board, nums[0], nums[1])) return false;
         }
     }
 
     return true;
 };
-
-function isValidPlae(row: number, col: number): boolean {
-    if (row - 1 < 0 || row + 1 > 8 || col - 1 < 0 || col + 1 > 8) {
-        return false;
-    }
-
-    return true;
-}
 
 function isCorrect(board: string[][], row: number, col: number) {
     const map = {};
@@ -65,7 +62,7 @@ function isCorrect(board: string[][], row: number, col: number) {
             }
         });
     });
-    console.log(`row=${row},col=${col},map=${JSON.stringify(map)}`);
+    // console.log(`row=${row},col=${col},map=${JSON.stringify(map)}`);
 
     return isCorrect;
 }
@@ -82,17 +79,17 @@ let str =
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".","0","8",".",".","7","9"]]
 
-// str =
-// [["8","3",".",".","7",".",".",".","."]
-// ,["6",".",".","1","9","5",".",".","."]
-// ,[".","9","8",".",".",".",".","6","."]
-// ,["8",".",".",".","6",".",".",".","3"]
-// ,["4",".",".","8",".","3",".",".","1"]
-// ,["7",".",".",".","2",".",".",".","6"]
-// ,[".","6",".",".",".",".","2","8","."]
-// ,[".",".",".","4","1","9",".",".","5"]
-// ,[".",".",".",".","8",".",".","7","9"]]
+str =
+[["8","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
 
-let ans;
-ans = isValidSudoku(str);
-console.log(`ans=${ans}`);
+// let ans;
+// ans = isValidSudoku(str);
+// console.log(`ans=${ans}`);
