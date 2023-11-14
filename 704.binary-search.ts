@@ -10,7 +10,6 @@ function search(nums: number[], target: number): number {
     let r = nums.length - 1;
     while (l <= r) {
       const idx = Math.trunc((l + r) / 2);
-      console.log(`l=${l}, r=${r}, idx=${idx}`);
 
       const num = nums[idx];
       if (num > target) {
