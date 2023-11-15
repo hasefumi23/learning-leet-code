@@ -24,4 +24,3 @@ function search(nums: number[], target: number): number {
     return -1;
 };
 // @lc code=end
-
